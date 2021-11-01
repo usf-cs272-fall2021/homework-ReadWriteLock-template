@@ -63,7 +63,7 @@ public class ThreadSafeIndexedSetTest {
 		@RepeatedTest(5)
 		public void testAddOnly() throws InterruptedException {
 			int num = 1000;
-			int threads = 3;
+			int threads = 5;
 			int chunk = num / threads;
 			int last = threads - 1;
 
@@ -92,7 +92,7 @@ public class ThreadSafeIndexedSetTest {
 		@RepeatedTest(5)
 		public void testAddAllOnly() throws InterruptedException {
 			int num = 1000;
-			int threads = 3;
+			int threads = 5;
 			int chunk = num / threads;
 			int last = threads - 1;
 
@@ -129,7 +129,7 @@ public class ThreadSafeIndexedSetTest {
 		@RepeatedTest(5)
 		public void testOneAddManyGets() throws InterruptedException {
 			int num = 1000;
-			int threads = 3;
+			int threads = 5;
 			int chunk = num / threads;
 			int last = threads - 1;
 
@@ -163,7 +163,7 @@ public class ThreadSafeIndexedSetTest {
 		@RepeatedTest(5)
 		public void testManyAddManyGets() throws InterruptedException {
 			int num = 1000;
-			int threads = 3;
+			int threads = 5;
 			int chunk = num / threads;
 			int last = threads - 1;
 
