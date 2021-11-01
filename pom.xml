@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>edu.usfca.cs272</groupId>
-	<artifactId>HomeworkName</artifactId>
+	<artifactId>ReadWriteLock</artifactId>
 	<version>2021-08</version>
 
 	<properties>
@@ -89,5 +89,18 @@
 			<version>${platformVersion}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- for logging -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${logj4Version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${logj4Version}</version>
+		</dependency>		
 	</dependencies>
 </project>
