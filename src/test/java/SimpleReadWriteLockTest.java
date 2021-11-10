@@ -36,6 +36,9 @@ public class SimpleReadWriteLockTest {
 	/** Specifies how long a worker thread should sleep. */
 	public static final long WORKER_SLEEP = 500;
 
+	/** How long to wait for deadlocked code. */
+	public static final long DEADLOCK_WAIT = 5000;
+
 	/**
 	 * Specifies how long to wait before starting a new worker. Must be less than
 	 * {@link #WORKER_SLEEP}.
@@ -421,7 +424,7 @@ public class SimpleReadWriteLockTest {
 		public void testReadOnlyUnlock() {
 			Executable action = () -> { SimpleReadWriteLock lock = new SimpleReadWriteLock(); lock.readLock().unlock(); };
 
-			Duration timeout = Duration.ofMillis(WORKER_SLEEP);
+			Duration timeout = Duration.ofMillis(DEADLOCK_WAIT);
 			assertTimeoutPreemptively(timeout, () -> { Assertions.assertThrows(IllegalStateException.class, action); });
 		}
 
@@ -439,7 +442,7 @@ public class SimpleReadWriteLockTest {
 				lock.readLock().unlock();
 			};
 
-			Duration timeout = Duration.ofMillis(WORKER_SLEEP);
+			Duration timeout = Duration.ofMillis(DEADLOCK_WAIT);
 			assertTimeoutPreemptively(timeout, () -> { Assertions.assertThrows(IllegalStateException.class, action); });
 		}
 
@@ -452,7 +455,7 @@ public class SimpleReadWriteLockTest {
 		public void testWriteOnlyUnlock() {
 			Executable action = () -> { SimpleReadWriteLock lock = new SimpleReadWriteLock(); lock.writeLock().unlock(); };
 
-			Duration timeout = Duration.ofMillis(WORKER_SLEEP);
+			Duration timeout = Duration.ofMillis(DEADLOCK_WAIT);
 			assertTimeoutPreemptively(timeout, () -> { Assertions.assertThrows(IllegalStateException.class, action); });
 		}
 
@@ -470,7 +473,7 @@ public class SimpleReadWriteLockTest {
 				lock.writeLock().unlock();
 			};
 
-			Duration timeout = Duration.ofMillis(WORKER_SLEEP);
+			Duration timeout = Duration.ofMillis(DEADLOCK_WAIT);
 			assertTimeoutPreemptively(timeout, () -> { Assertions.assertThrows(IllegalStateException.class, action); });
 		}
 
